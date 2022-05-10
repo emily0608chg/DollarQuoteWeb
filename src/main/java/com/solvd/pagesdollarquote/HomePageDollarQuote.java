@@ -14,32 +14,35 @@ public class HomePageDollarQuote extends AbstractPage {
         super(driver);
     }
 
-    @FindBy (xpath= "//div[@class='inner relative']/a[2]")
+    @FindBy(xpath = "//div[@class='inner relative']/a[2]")
     private ExtendedWebElement buttonMenu;
 
-    @FindBy (xpath = "//ul[@id='main-menu']//*[text()='Cotización Hoy']")
+    @FindBy(xpath = "//a[text()='Cotización Hoy']")
     private ExtendedWebElement validateTextQuote;
 
-    @FindBy (xpath= "//ul[@class='sub-menu']/li[5]//*[text()='Dólar Histórico']")
+    @FindBy(xpath = "//a[text()='Dólar Histórico']")
     private ExtendedWebElement dollarButton;
 
 
-    public void clickMenuButton(){
+    public void clickMenuButton() {
         buttonMenu.click();
-        WebDriverWait wait = new WebDriverWait(driver, 5);
-        wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath("//div[@class='inner relative']/a[2]"))));
+        //WebDriverWait wait = new WebDriverWait(driver, 5);
+        //wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath("//div[@class='inner relative']/a[2]"))));
     }
 
-    public void validateTextQuote(){
-        System.out.println(validateTextQuote.getText());
-
+    public String validateTextQuote() {
+        String text = validateTextQuote.getText();
+        return text;
     }
 
-    public void clickDollarButton(){
+    public void clickDollarButton() {
         dollarButton.click();
-        WebDriverWait wait = new WebDriverWait(driver, 5);
-        wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath("//ul[@class='sub-menu']/li[5]//*[text()='Dólar Histórico']"))));
+        //WebDriverWait wait = new WebDriverWait(driver, 5);
+        //wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath("//a[text()='Dólar Histórico']"))));
+    }
 
+    public WindowsAlertPage closeWindowsAlert() {
+        return new WindowsAlertPage(driver);
     }
 
 
