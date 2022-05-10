@@ -7,8 +7,9 @@ import java.util.Date;
 public class DateWeb {
 
     private String webDate;
-    private String extractYear;
 
+
+    //  02/26/2018 to 26-02-2018
     public String getTransformDate(String date) throws ParseException {
         StringBuilder formatDate = new StringBuilder(date);
         int i = 0;
@@ -42,7 +43,7 @@ public class DateWeb {
         return year2;
     }
 
-    //04-04-18
+    //04/04/2018 to 04-04-18
     public String getCompleteDate(String date) throws ParseException {
         StringBuilder formatDate = new StringBuilder(date);
         int i = 0;
@@ -71,12 +72,5 @@ public class DateWeb {
         this.webDate = webDate;
     }
 
-    public String getExtractYear() {
 
-        return extractYear;
-    }
-
-    public void setExtractYear(String extractYear) {
-        this.extractYear = extractYear;
-    }
 }

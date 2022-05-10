@@ -5,8 +5,6 @@ import com.qaprosoft.carina.core.gui.AbstractPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class HomePageDollarQuote extends AbstractPage {
 
@@ -22,6 +20,12 @@ public class HomePageDollarQuote extends AbstractPage {
 
     @FindBy(xpath = "//a[text()='Dólar Histórico']")
     private ExtendedWebElement dollarButton;
+
+    @FindBy (css= "#dismiss-button")
+    private ExtendedWebElement closeWindowAlert;
+
+    @FindBy(id = "ad_iframe")
+    private ExtendedWebElement adFrame;
 
 
     public void clickMenuButton() {
@@ -41,8 +45,10 @@ public class HomePageDollarQuote extends AbstractPage {
         //wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath("//a[text()='Dólar Histórico']"))));
     }
 
-    public WindowsAlertPage closeWindowsAlert() {
-        return new WindowsAlertPage(driver);
+    public void closeWindowIfPresent() {
+        driver.switchTo().frame(driver.findElement(By.id("ad_iframe")));
+        closeWindowAlert.click();
+
     }
 
 
